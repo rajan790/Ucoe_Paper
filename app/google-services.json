@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389008291092",
+    "project_id": "ucoe-papers",
+    "storage_bucket": "ucoe-papers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389008291092:android:9cd427f063932170a0be01",
+        "android_client_info": {
+          "package_name": "com.example.ucoe_p1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389008291092-8kjofm9emmiseocokjfi66j3r5ruo5n6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz2AAM9ILUfnnm6iPCqJR0AgYy5c4fkBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389008291092-8kjofm9emmiseocokjfi66j3r5ruo5n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

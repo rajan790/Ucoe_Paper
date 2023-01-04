@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ucoe_p!</string>
+    <string name="electronics_comm_eng"><![CDATA[Ele & comm. ENG]]></string>
+    <string name="computer_science_eng">Computer Science ENG</string>
+    <string name="mechanical_eng">Mechanical ENG</string>
+    <string name="civil_eng">Civil ENG</string>
+    <string name="_4th">4th</string>
+    <string name="_3rd">3rd</string>
+    <string name="_1st">1st</string>
+    <string name="_2nd">2nd</string>
+    <string name="dc_ld"><![CDATA[DC&LD]]></string>
+    <string name="microprocessor_assembly"><![CDATA[Microprocessor & Assembly]]></string>
+    <string name="algorithm_desigen"><![CDATA[Algorithm & Desigen]]></string>
+    <string name="cryptography_network_s"><![CDATA[Cryptography & Network S]]></string>
+    <string name="electronics_compu_eng"><![CDATA[Ele & computer Eng]]></string>
+    <string name="contact_us">Contact Us</string>
+
+</resources>

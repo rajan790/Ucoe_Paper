@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="9dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/subject_button"
+            android:fontFamily="@font/alegreya_bold"
+            android:textAllCaps="false"
+            android:textColor="@color/coe_blue"
+            android:textSize="30sp">
+        </Button>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
