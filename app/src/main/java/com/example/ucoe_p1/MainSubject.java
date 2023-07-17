@@ -1,9 +1,9 @@
 package com.example.ucoe_p1;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainSubject extends AppCompatActivity {
+public class MainSubject extends AppCompatActivity{
     RecyclerView recyclerView;
     ArrayList<parent_model> parent_modelArrayList;
     ArrayList<child_model> child_modelArrayList;
     ArrayList<child_model> child_modelArrayList2;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
     int branch;
-    @SuppressLint("NotifyDataSetChanged")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class MainSubject extends AppCompatActivity {
                 child_modelArrayList2.add(new child_model(" Applied    Math-2",1));
                 child_modelArrayList2.add(new child_model("DC&LD",1));
                 child_modelArrayList2.add(new child_model("OOPS",1));
-                child_modelArrayList2.add(new child_model("Engenerring Graphics",1));
+                child_modelArrayList2.add(new child_model("Engineering Graphics",1));
                 child_modelArrayList2.add(new child_model("Communication Skills",1));
                 parent_modelArrayList.add(new parent_model("Second Sem",child_modelArrayList2));
             }
@@ -306,5 +307,16 @@ public class MainSubject extends AppCompatActivity {
         }
         parent_modelArrayList.add(new parent_model("Second Sem",child_modelArrayList2));
     }
-
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
+    }
 }

@@ -1,29 +1,17 @@
 package com.example.ucoe_p1;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Animatable;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.webkit.CookieManager;
-import android.webkit.URLUtil;
-import android.widget.Button;
-import android.widget.Toast;
 
-
-
-public class mmf extends AppCompatActivity implements View.OnClickListener{
+public class mmf extends AppCompatActivity implements View.OnClickListener {
 private Button b11;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +20,21 @@ private Button b11;
 
         b11.setOnClickListener(this);
     }
-    @Override
+
     public void onClick(View view)
     {
 
+    }
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
     }
 }

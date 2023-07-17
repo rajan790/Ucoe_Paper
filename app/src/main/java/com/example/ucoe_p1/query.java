@@ -1,17 +1,16 @@
 package com.example.ucoe_p1;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.media.Image;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import java.net.URI;
+import androidx.appcompat.app.AppCompatActivity;
 public class query extends AppCompatActivity implements View.OnClickListener{
-
 ImageView i1,i2,i3;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -20,16 +19,12 @@ ImageView i1,i2,i3;
         i1=findViewById(R.id.imageView1);
         i2=findViewById(R.id.imageView2);
         i3=findViewById(R.id.imageView3);
-
         i1.setOnClickListener(this);
         i2.setOnClickListener(this);
         i3.setOnClickListener(this);
-
     }
-    @Override
     public void onClick(View view)
     {
-
         switch(view.getId())
         {
             case R.id.imageView1:
@@ -45,5 +40,17 @@ ImageView i1,i2,i3;
                 startActivity(browse3);
                 break;
         }
+    }
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
     }
 }

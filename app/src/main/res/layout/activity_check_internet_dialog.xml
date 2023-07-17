@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/s5"
+    android:gravity="center"
     tools:context=".check_internet_dialog">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="122dp"
+        android:layout_height="131dp"
+        android:src="@drawable/ic_baseline_signal_wifi_off_24"
+        app:tint="@color/green_coe">
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/alegreya_bold"
+        android:gravity="center"
+        android:text="Please Check Your internet connectivity and try again"
+        android:textColor="#636363">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/btnRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_coe"
+        android:fontFamily="@font/alegreya_bold"
+        android:text="Retry"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+    </Button>
+
+</LinearLayout>

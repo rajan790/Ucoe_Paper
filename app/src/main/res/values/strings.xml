@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ucoe_p!</string>
+    <string name="app_name">Ucoe Store</string>
     <string name="electronics_comm_eng"><![CDATA[Ele & comm. ENG]]></string>
     <string name="computer_science_eng">Computer Science ENG</string>
     <string name="mechanical_eng">Mechanical ENG</string>
@@ -14,5 +14,7 @@
     <string name="cryptography_network_s"><![CDATA[Cryptography & Network S]]></string>
     <string name="electronics_compu_eng"><![CDATA[Ele & computer Eng]]></string>
     <string name="contact_us">Contact Us</string>
-
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
 </resources>

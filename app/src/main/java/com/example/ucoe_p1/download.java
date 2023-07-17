@@ -1,11 +1,10 @@
 package com.example.ucoe_p1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,21 +12,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.util.Locale;
-
-public class download extends AppCompatActivity
-{
+public class download extends AppCompatActivity{
     Button mst1,mst2,mst3;
     String receive;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     StorageReference ref;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,5 +91,17 @@ public class download extends AppCompatActivity
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,filename);
         downloadManager.enqueue(request);
+    }
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
     }
 }

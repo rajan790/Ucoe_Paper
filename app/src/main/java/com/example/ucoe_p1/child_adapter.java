@@ -1,13 +1,13 @@
 package com.example.ucoe_p1;
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,29 +27,43 @@ public class child_adapter extends RecyclerView.Adapter<child_adapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View view= LayoutInflater.from(context).inflate(R.layout.child_rv,null,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.child_rv,null,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
-
+        int sizeid=child_modelList.get(position).change_size;
+        if(sizeid==10)
+        {
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(1000, ViewGroup.LayoutParams.WRAP_CONTENT);
+            holder.btn1.setLayoutParams(lp);
+              holder.btn1.setBackgroundColor(Color.TRANSPARENT);
+        }
         holder.btn1.setText(child_modelList.get(position).btn);
         String send=(String) child_modelList.get(position).btn;
-        holder.btn1.setOnClickListener(view -> {
+            holder.btn1.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
 //                Toast.makeText(context, "s = "+send, Toast.LENGTH_SHORT).show();
-            Intent ieven=new Intent(context,download.class);
-            ieven.putExtra("paper",send);
-            view.getContext().startActivity(ieven);
+                    if(sizeid!=10)
+                    {
+                        Intent ieven=new Intent(context,download.class);
+                        ieven.putExtra("paper",send);
+                        view.getContext().startActivity(ieven);
+                    }
 //                view.getContext().startActivity(new Intent(context,download.class));
-        });
+                }
+            });
     }
     @Override
     public int getItemCount() {
         return child_modelList.size();
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder
     {
         Button btn1;
         public ViewHolder(@NonNull View itemView)

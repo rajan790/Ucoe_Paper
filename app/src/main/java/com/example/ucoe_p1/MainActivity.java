@@ -1,14 +1,17 @@
 package com.example.ucoe_p1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btn1,btn2,btn3,btn4,btn5,btn6;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,22 +22,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn4=findViewById(R.id.button3);
         btn5=findViewById(R.id.button4);
         btn6=findViewById(R.id.button12);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
-        btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
+        btn1.setOnClickListener( this);
+        btn2.setOnClickListener( this);
+        btn3.setOnClickListener( this);
+        btn4.setOnClickListener( this);
+        btn5.setOnClickListener( this);
         Intent intent=new Intent(this,query.class);
-        btn6.setOnClickListener(new View.OnClickListener()
-        {
+        btn6.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 startActivity(intent);
             }
         });
      }
-    @Override
     public void onClick(View view)
     {
         Intent intent=new Intent(this,year.class);
@@ -61,5 +61,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
         }
+    }
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
     }
 }

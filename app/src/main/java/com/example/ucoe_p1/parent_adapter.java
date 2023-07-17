@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,13 +16,15 @@ public class parent_adapter extends RecyclerView.Adapter<parent_adapter.ViewHold
 {
     List<parent_model> parent_modelsList;
     Context context;
-    public parent_adapter(List<parent_model> parent_modelsList, Context context) {
+    public parent_adapter(List<parent_model> parent_modelsList, Context context)
+    {
         this.parent_modelsList = parent_modelsList;
         this.context = context;
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         View view= LayoutInflater.from(context).inflate(R.layout.coustom_desigen,null,false);
         return new ViewHolder(view);
     }
@@ -38,14 +39,16 @@ public class parent_adapter extends RecyclerView.Adapter<parent_adapter.ViewHold
         c1.notifyDataSetChanged();
     }
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return parent_modelsList.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         RecyclerView rv_child;
         TextView t1;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView)
+        {
             super(itemView);
             t1=itemView.findViewById(R.id.text1);
             rv_child=itemView.findViewById(R.id.rv_child);

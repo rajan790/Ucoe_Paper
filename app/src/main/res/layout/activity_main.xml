@@ -10,9 +10,9 @@
     tools:context=".MainActivity">
     <Button
         android:id="@+id/button"
-        android:layout_width="290dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/computer_science_eng"
@@ -28,9 +28,9 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="290dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/civil_eng"
@@ -46,13 +46,13 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_35sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/electronics_compu_eng"
         android:textColor="#131F50"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,14 +64,14 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="290dp"
-        android:layout_height="44dp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_35sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/electronics_comm_eng"
         android:textColor="#131F50"
         android:textSize="22sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -82,9 +82,9 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="290dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/mechanical_eng"
@@ -100,9 +100,9 @@
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="153dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_27sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
         android:text="@string/contact_us"

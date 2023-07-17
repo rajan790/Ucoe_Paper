@@ -1,16 +1,17 @@
 package com.example.ucoe_p1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
-public class year extends AppCompatActivity implements View.OnClickListener{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class year extends AppCompatActivity implements View.OnClickListener {
 private Button b5,b6,b7,b8;
+    NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
 int branch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +24,10 @@ int branch;
         b5.setOnClickListener(this);
         b6.setOnClickListener(this);
         b7.setOnClickListener(this);
-        b8.setOnClickListener(this);
+        b8.setOnClickListener( this);
         Intent forbranch=getIntent();
         branch=forbranch.getIntExtra("branch",0);
     }
-
-    @Override
     public void onClick(View view)
     {
         Intent intent =new Intent(this,MainSubject.class);
@@ -54,7 +53,18 @@ int branch;
                 intent.putExtra("branch",branch);
                 startActivity(intent);
                 break;
-
         }
+    }
+    @Override
+    protected void onStart()
+    {
+        IntentFilter filter= new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeLisetner,filter);
+        super.onStart();
+    }
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeLisetner);
+        super.onStop();
     }
 }
