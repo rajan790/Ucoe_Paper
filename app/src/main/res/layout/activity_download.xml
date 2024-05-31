@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/s5"
     tools:context=".download">
-
     <Button
         android:id="@+id/button15"
         android:layout_width="171dp"
         android:layout_height="116dp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
-        android:text="Mst - 2"
+        android:text="@string/mst_2"
         android:textAllCaps="false"
         android:textColor="@color/coe_blue"
         android:textSize="40sp"
@@ -30,7 +29,7 @@
         android:layout_height="116dp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
-        android:text="Mst - 1"
+        android:text="@string/mst_1"
         android:textAllCaps="false"
         android:textColor="@color/coe_blue"
         android:textSize="40sp"
@@ -47,7 +46,7 @@
         android:layout_height="116dp"
         android:background="@drawable/subject_button"
         android:fontFamily="@font/alegreya_bold"
-        android:text="Final"
+        android:text="@string/final0"
         android:textAllCaps="false"
         android:textColor="@color/coe_blue"
         android:textSize="40sp"
@@ -66,5 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.146"
-        app:srcCompat="@drawable/selection" />
+        app:srcCompat="@drawable/selection"
+        android:contentDescription="@string/todo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

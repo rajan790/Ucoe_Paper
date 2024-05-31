@@ -17,4 +17,8 @@
     <string name="todo">TODO</string>
     <string name="todo2">TODO</string>
     <string name="todo3">TODO</string>
+    <string name="mst_2">Mst - 2</string>
+    <string name="mst_1">Mst - 1</string>
+    <string name="final0">Final</string>
+    <string name="first_sem">First Sem</string>
 </resources>

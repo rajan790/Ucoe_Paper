@@ -8,11 +8,9 @@
     android:background="@drawable/s5"
     android:gravity="center_vertical"
     tools:context=".MainSubject">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
-
 </androidx.appcompat.widget.LinearLayoutCompat>

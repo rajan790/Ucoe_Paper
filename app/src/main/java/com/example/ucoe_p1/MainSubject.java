@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +35,16 @@ public class MainSubject extends AppCompatActivity{
         child_modelArrayList2=new ArrayList<>();
         parent_modelArrayList=new ArrayList<>();
         parent_adapter parent1;
-        
+        WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        // Get the default display
+        Display display = windowManager.getDefaultDisplay();
+        // Create a DisplayMetrics object
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        // Populate the DisplayMetrics object
+        display.getMetrics(displayMetrics);
+
+        // Get the width in pixels
+        int width = displayMetrics.widthPixels;
         
         if(year==1)
         {
@@ -273,7 +285,7 @@ public class MainSubject extends AppCompatActivity{
             }
         }
 
-        parent1=new parent_adapter(parent_modelArrayList,this);
+        parent1=new parent_adapter(parent_modelArrayList,this,branch,year,width);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(parent1);
         parent1.notifyDataSetChanged();

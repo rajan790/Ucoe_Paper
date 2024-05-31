@@ -1,13 +1,10 @@
 package com.example.ucoe_p1;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,13 +16,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 public class download extends AppCompatActivity{
     Button mst1,mst2,mst3;
     String receive;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     StorageReference ref;
+    int branch,year;
     NetworkChangeLisetner networkChangeLisetner=new NetworkChangeLisetner();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +30,8 @@ public class download extends AppCompatActivity{
         setContentView(R.layout.activity_download);
         Intent forselection = getIntent();
         receive = forselection.getStringExtra("paper");
+        branch=forselection.getIntExtra("branch",0);
+        year=forselection.getIntExtra("year",0);
         mst1=findViewById(R.id.button14);
         mst2=findViewById(R.id.button15);
         mst3=findViewById(R.id.button16);
@@ -60,20 +59,27 @@ public class download extends AppCompatActivity{
                 download(select);
             }
         });
-
     }
     public void download(String select)
     {
+        if (year==1)
+        {
+            branch=1;
+        }
+        String br ="branch "+branch;
+        String yr="year "+year;
 //        Toast.makeText(this, ""+select, Toast.LENGTH_SHORT).show();
         storageReference = firebaseStorage.getInstance().getReference();
-        ref=storageReference.child(select);
+        ref=storageReference.child(br).child(yr).child(select);
+        Intent pdf = new Intent(this, pdf_view.class);
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri)
             {
                 String url= uri.toString();
-                Toast.makeText(download.this, "Check Notifaction Bar", Toast.LENGTH_SHORT).show();
-                downloadfile(download.this,select, Environment.DIRECTORY_DOWNLOADS,url);
+                pdf.putExtra("url",url);
+                pdf.putExtra("name",select);
+                startActivity(pdf);
             }
         }).addOnFailureListener(new OnFailureListener()
         {
@@ -83,15 +89,7 @@ public class download extends AppCompatActivity{
             }
         });
     }
-    public void downloadfile(Context context,String filename,String destinationDirectory,String url)
-    {
-        DownloadManager downloadManager= (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        Uri uri =Uri.parse(url);
-        DownloadManager.Request request= new DownloadManager.Request(uri);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,filename);
-        downloadManager.enqueue(request);
-    }
+
     @Override
     protected void onStart()
     {

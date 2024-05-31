@@ -18,11 +18,13 @@ public class child_adapter extends RecyclerView.Adapter<child_adapter.ViewHolder
 {
     List<child_model> child_modelList;
     Context context;
-
-    public child_adapter(List<child_model> child_modelList, Context context)
+    int branch,year;
+    public child_adapter(List<child_model> child_modelList, Context context,int branch,int year)
     {
         this.child_modelList = child_modelList;
         this.context = context;
+        this.branch=branch;
+        this.year=year;
     }
     @NonNull
     @Override
@@ -42,6 +44,7 @@ public class child_adapter extends RecyclerView.Adapter<child_adapter.ViewHolder
               holder.btn1.setBackgroundColor(Color.TRANSPARENT);
         }
         holder.btn1.setText(child_modelList.get(position).btn);
+
         String send=(String) child_modelList.get(position).btn;
             holder.btn1.setOnClickListener(new View.OnClickListener()
             {
@@ -53,6 +56,8 @@ public class child_adapter extends RecyclerView.Adapter<child_adapter.ViewHolder
                     {
                         Intent ieven=new Intent(context,download.class);
                         ieven.putExtra("paper",send);
+                        ieven.putExtra("branch",branch);
+                        ieven.putExtra("year",year);
                         view.getContext().startActivity(ieven);
                     }
 //                view.getContext().startActivity(new Intent(context,download.class));

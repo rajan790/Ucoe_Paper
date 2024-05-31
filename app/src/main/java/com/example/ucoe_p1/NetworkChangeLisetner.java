@@ -22,7 +22,7 @@ public class NetworkChangeLisetner extends BroadcastReceiver
     public void onReceive(Context context, Intent intent) {
         if (!check_internet.isConnectedToInternet(context))
         {
-            AlertDialog.Builder builder=new AlertDialog.Builder(context, R.style.myfullscreendialog);
+            AlertDialog.Builder builder=new AlertDialog.Builder(context, R.style.Theme_Ucoe_p1);
             View layout_dialog= LayoutInflater.from(context).inflate(R.layout.activity_check_internet_dialog,null);
             builder.setView(layout_dialog);
             AppCompatButton btnRetry = layout_dialog.findViewById(R.id.btnRetry);

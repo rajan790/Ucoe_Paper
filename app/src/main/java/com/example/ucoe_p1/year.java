@@ -27,6 +27,7 @@ int branch;
         b8.setOnClickListener( this);
         Intent forbranch=getIntent();
         branch=forbranch.getIntExtra("branch",0);
+        // Get the width in pixels
     }
     public void onClick(View view)
     {

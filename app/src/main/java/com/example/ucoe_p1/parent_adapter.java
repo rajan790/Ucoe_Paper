@@ -16,24 +16,30 @@ public class parent_adapter extends RecyclerView.Adapter<parent_adapter.ViewHold
 {
     List<parent_model> parent_modelsList;
     Context context;
-    public parent_adapter(List<parent_model> parent_modelsList, Context context)
+    int branch,year,width;
+    public parent_adapter(List<parent_model> parent_modelsList, Context context,int branch, int year,int width)
     {
         this.parent_modelsList = parent_modelsList;
         this.context = context;
+        this.branch=branch;
+        this.year=year;
+        this.width=width;
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
+
         View view= LayoutInflater.from(context).inflate(R.layout.coustom_desigen,null,false);
         return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
+
         holder.t1.setText(parent_modelsList.get(position).title);
         child_adapter c1;
-        c1=new child_adapter(parent_modelsList.get(position).child_modelList,context);
+        c1=new child_adapter(parent_modelsList.get(position).child_modelList,context,branch,year);
         holder.rv_child.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         holder.rv_child.setAdapter(c1);
         c1.notifyDataSetChanged();
